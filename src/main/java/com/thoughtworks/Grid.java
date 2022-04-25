@@ -49,7 +49,7 @@ public class Grid {
         for (int i = 0; i < 8; i++) {
             aliveCount += getNeighbourStatus(x_neighbours[i], y_neighbours[i]) ? 1 : 0;
         }
-
+        cells.get(x).get(y).checkCellStatusInNextTick(aliveCount);
         return aliveCount;
     }
 
@@ -59,5 +59,9 @@ public class Grid {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean getCellStatusInNextTick(int x, int y) {
+        return cells.get(x).get(y).cellStatusInNextTick();
     }
 }
